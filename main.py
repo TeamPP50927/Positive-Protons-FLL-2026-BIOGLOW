@@ -37,7 +37,7 @@ def wait_for_center_button():
 
 current_run = 0
 
-while current_run <= 5:
+while current_run <= 6:
 
     hub.display.number(current_run)
 
@@ -60,6 +60,9 @@ while current_run <= 5:
     
     elif current_run == 5:
         Run_5.main(drive_base)
+        
+    elif current_run == 6:
+        Run_6.main(drive_base)
 
     current_run += 1
 
