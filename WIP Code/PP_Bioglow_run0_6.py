@@ -1,0 +1,172 @@
+"""Positive Protons BIOGLOW - SPIKE Prime Pybricks single-file program.
+
+LEFT: previous run. RIGHT: next run.
+CENTER: execute selected run, then advance.
+BLUETOOTH: stop and exit, including during motor movements.
+Pybricks editor Stop also remains available.
+Keep hub stationary while gyro initializes and before starting each run.
+"""
+from pybricks.hubs import PrimeHub
+from pybricks.pupdevices import Motor
+from pybricks.parameters import Port, Direction, Button, Stop
+from pybricks.robotics import DriveBase
+from pybricks.tools import wait
+
+hub = PrimeHub()
+hub.system.set_stop_button(Button.BLUETOOTH)
+
+left_motor = Motor(Port.A, Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.E, Direction.CLOCKWISE)
+LAM = Motor(Port.D, Direction.CLOCKWISE)
+RAM = Motor(Port.C, Direction.CLOCKWISE)
+drive_base = DriveBase(left_motor, right_motor, 56, 97)
+
+
+def initialize_robot():
+    """Run once at startup while the robot is stationary."""
+    drive_base.stop()
+    LAM.stop()
+    RAM.stop()
+    wait(500)
+    drive_base.use_gyro(True)
+    while not hub.imu.ready():
+        wait(100)
+    drive_base.settings(straight_speed=300,
+                        straight_acceleration=500,
+                        turn_rate=150,
+                        turn_acceleration=300)
+    drive_base.reset(0, 0)
+    LAM.reset_angle(0)
+    RAM.reset_angle(0)
+    print('Robot ready - LEFT previous, RIGHT next, CENTER run, BLUETOOTH exit')
+
+
+def prepare_run():
+    """Zero distance/heading before each mission; do not reinitialize gyro."""
+    drive_base.stop()
+    LAM.stop()
+    RAM.stop()
+    drive_base.reset(0, 0)
+
+
+def gyro_straight(distance, speed=200):
+    """Drive signed distance in mm at positive speed in mm/s."""
+    if speed <= 0:
+        raise ValueError('Speed must be positive')
+    drive_base.settings(straight_speed=speed)
+    drive_base.straight(distance)
+
+
+def gyro_turn(angle, speed=100):
+    """Turn signed angle in degrees at positive rate in degrees/s."""
+    if speed <= 0:
+        raise ValueError('Turn speed must be positive')
+    drive_base.settings(turn_rate=speed)
+    drive_base.turn(angle)
+
+
+def attachment_move(motor, angle, speed=300):
+    """Move attachment relative to its current angle."""
+    motor.run_angle(speed, angle, then=Stop.HOLD, wait=True)
+
+
+# Example missions. Replace with your team's real movements.
+def run_0():
+    gyro_straight(360, 350)
+    gyro_turn(45,45)
+    gyro_straight(360, 350)
+    gyro_turn(-45,45)
+    gyro_straight(80, 50)
+    attachment_move(LAM, 5560, 960)
+    gyro_straight(30, 550)
+    #gyro_straight(-80, 150)
+    #attachment_move(LAM, -5560, 960)
+
+
+def run_1():
+    gyro_straight(820, 150)
+    gyro_turn(-45, 45)
+    gyro_turn(45, 45)
+    gyro_straight(-620, 850)
+
+
+def run_2():
+    LAM.reset_angle(0)
+    gyro_straight(150, 350)
+    gyro_turn(47, 45)
+    LAM.run_target(350, 300)
+    gyro_straight(280, 850)
+    LAM.run_target(350, -50)
+    #gyro_straight(-200, 350,wait=False)
+    #LAM.run_target(350, -50)
+
+def run_3():
+    RAM.reset_angle(0)
+    gyro_straight(790, 250)
+    RAM.run_target(350, -150)
+    gyro_straight(20, 250)
+    RAM.run_target(1500, -350)
+    
+
+
+def run_4():
+    pass
+
+
+def run_5():
+    pass
+
+
+RUNS = (run_0, run_1, run_2, run_3, run_4, run_5)
+
+
+def wait_for_buttons_release():
+    """Wait until all hub buttons have been released."""
+    while hub.buttons.pressed():
+        wait(20)
+
+
+def main():
+    initialize_robot()
+    selected = 0
+    hub.display.number(selected)
+    wait_for_buttons_release()
+
+    while True:
+        buttons = hub.buttons.pressed()
+
+        if Button.LEFT in buttons:
+            wait_for_buttons_release()
+            selected = (selected - 1) % len(RUNS)
+            hub.display.number(selected)
+            print('Selected run:', selected)
+
+        elif Button.RIGHT in buttons:
+            wait_for_buttons_release()
+            selected = (selected + 1) % len(RUNS)
+            hub.display.number(selected)
+            print('Selected run:', selected)
+
+        elif Button.CENTER in buttons:
+            wait_for_buttons_release()
+            print('Starting run:', selected)
+            try:
+                prepare_run()
+                RUNS[selected]()
+            except Exception as exc:
+                drive_base.stop()
+                LAM.stop()
+                RAM.stop()
+                hub.display.char('E')
+                print('Run failed:', exc)
+                wait(1500)
+            else:
+                drive_base.stop()
+                print('Completed run:', selected)
+                selected = (selected + 1) % len(RUNS)
+            hub.display.number(selected)
+
+        wait(20)
+
+
+main()
