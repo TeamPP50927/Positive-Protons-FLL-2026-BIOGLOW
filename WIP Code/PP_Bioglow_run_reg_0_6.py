@@ -96,7 +96,7 @@ def run_2():
     gyro_turn(48, 45)
     LAM.run_target(350, 300)
     gyro_straight(280, 850)
-    LAM.run_target(350, -50)
+    LAM.run_target(350, -35)
     gyro_straight(-200, 350)
     LAM.run_target(350, -50)
 
