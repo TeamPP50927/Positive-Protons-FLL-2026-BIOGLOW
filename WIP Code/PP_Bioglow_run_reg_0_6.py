@@ -93,12 +93,12 @@ def run_1():
 def run_2():
     LAM.reset_angle(0)
     gyro_straight(150, 350)
-    gyro_turn(47, 45)
+    gyro_turn(48, 45)
     LAM.run_target(350, 300)
     gyro_straight(280, 850)
     LAM.run_target(350, -50)
-    #gyro_straight(-200, 350,wait=False)
-    #LAM.run_target(350, -50)
+    gyro_straight(-200, 350)
+    LAM.run_target(350, -50)
 
 def run_3():
     RAM.reset_angle(0)
