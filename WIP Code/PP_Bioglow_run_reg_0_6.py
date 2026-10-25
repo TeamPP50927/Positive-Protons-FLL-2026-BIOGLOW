@@ -99,6 +99,7 @@ def run_2():
     LAM.run_target(350, -35)
     gyro_straight(-200, 350)
     LAM.run_target(350, -50)
+    gyro_straight(-200,300)
 
 def run_3():
     RAM.reset_angle(0)
