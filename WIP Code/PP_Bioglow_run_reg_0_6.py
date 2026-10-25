@@ -102,12 +102,12 @@ def run_2():
 
 def run_3():
     RAM.reset_angle(0)
-    gyro_straight(790, 250)
-    RAM.run_target(350, -150)
-    gyro_straight(20, 250)
-    RAM.run_target(1500, -350)
-    
-
+    gyro_straight(60,500)
+    RAM.run_target(650,1980)
+    gyro_straight(-100,500)
+    gyro_straight(40,300)
+    RAM.run_target(550,-1980)
+    gyro_straight(-320,500)
 
 def run_4():
     pass
