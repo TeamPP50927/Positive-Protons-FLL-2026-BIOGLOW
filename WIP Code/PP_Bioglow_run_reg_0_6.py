@@ -1,4 +1,5 @@
 """Positive Protons BIOGLOW - SPIKE Prime Pybricks single-file program.
+Last Modifed : Oct 25 2026
 
 LEFT: previous run. RIGHT: next run.
 CENTER: execute selected run, then advance.
@@ -11,6 +12,8 @@ from pybricks.pupdevices import Motor
 from pybricks.parameters import Port, Direction, Button, Stop
 from pybricks.robotics import DriveBase
 from pybricks.tools import wait
+from pybricks.tools import wait, StopWatch
+
 
 hub = PrimeHub()
 hub.system.set_stop_button(Button.BLUETOOTH)
@@ -64,6 +67,32 @@ def gyro_turn(angle, speed=100):
     drive_base.settings(turn_rate=speed)
     drive_base.turn(angle)
 
+def gyro_straight_stall(distance, speed=50, timeout=3000):
+    # Set driving speed
+    drive_base.settings(straight_speed=abs(speed))
+
+    # Start movement without waiting
+    drive_base.straight(distance, wait=False)
+
+    timer = StopWatch()
+
+    while not drive_base.done():
+        # Stop if robot is stalled
+        if drive_base.stalled():
+            print("Stall detected")
+            drive_base.stop()
+            return True
+
+        # Safety timeout
+        if timer.time() >= timeout:
+            print("Movement timeout")
+            drive_base.stop()
+            return False
+
+        wait(10)
+
+    print("Movement completed")
+    return False
 
 def attachment_move(motor, angle, speed=300):
     """Move attachment relative to its current angle."""
@@ -72,33 +101,37 @@ def attachment_move(motor, angle, speed=300):
 
 # Example missions. Replace with your team's real movements.
 def run_0():
-    gyro_straight(360, 350)
-    gyro_turn(45,45)
-    gyro_straight(360, 350)
-    gyro_turn(-45,45)
-    gyro_straight(80, 50)
-    attachment_move(LAM, 5560, 960)
-    gyro_straight(30, 550)
+    gyro_straight(760, 200)
+    gyro_straight(-45, 40)
+    gyro_turn(-60,45)
+    gyro_straight(-10, 40)
+    gyro_turn(60,45)
+    gyro_straight(-540, 500)
+    gyro_turn(-90,45)
+    gyro_straight_stall(-100, 50)
+    #gyro_straight(-100, 50)
+    #attachment_move(LAM, 5560, 960)
+    #gyro_straight(30, 550)
     #gyro_straight(-80, 150)
     #attachment_move(LAM, -5560, 960)
 
 
-def run_1():
+def run_2():
     gyro_straight(820, 150)
     gyro_turn(-45, 45)
     gyro_turn(45, 45)
     gyro_straight(-620, 850)
 
 
-def run_2():
+def run_1():
     LAM.reset_angle(0)
     gyro_straight(150, 350)
     gyro_turn(48, 45)
     LAM.run_target(350, 300)
     gyro_straight(270, 850)
-    LAM.run_target(350, -45)
-    gyro_straight(-200, 350)
-    LAM.run_target(350, -50)
+    LAM.run_target(250, 50)
+    LAM.run_target(150, -100, wait=False)
+    gyro_straight(-200, 100)
     gyro_straight(-200,300)
 
 def run_3():
@@ -111,6 +144,19 @@ def run_3():
     gyro_straight(-320,500)
 
 def run_4():
+    RAM.reset_angle(0)
+    gyro_straight(190,700)
+    RAM.run_target(450,2700,wait=False)
+    gyro_straight(90,20)
+    wait(1000)
+    gyro_straight(-100,20)
+    gyro_straight(30,20)
+    RAM.run_target(450,2200)
+    RAM.run_target(900,0,wait=False)
+    gyro_straight(-300,700)
+
+
+
     pass
 
 
