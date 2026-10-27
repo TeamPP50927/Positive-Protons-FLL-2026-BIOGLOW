@@ -84,10 +84,8 @@ def run_0():
 
 
 def run_1():
-    gyro_straight(820, 150)
-    gyro_turn(-45, 45)
-    gyro_turn(45, 45)
-    gyro_straight(-620, 850)
+    RAM.reset_angle(0)
+    RAM.run_target(180000,180000)
 
 
 def run_2():
