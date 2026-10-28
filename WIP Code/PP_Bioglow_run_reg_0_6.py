@@ -93,7 +93,7 @@ def gyro_straight_stall(distance, speed=50, timeout=3000):
 
     print("Movement completed")
     return False
-
+    
 def attachment_move(motor, angle, speed=300):
     """Move attachment relative to its current angle."""
     motor.run_angle(speed, angle, then=Stop.HOLD, wait=True)
@@ -116,13 +116,6 @@ def run_0():
     #attachment_move(LAM, -5560, 960)
 
 
-def run_2():
-    gyro_straight(820, 150)
-    gyro_turn(-45, 45)
-    gyro_turn(45, 45)
-    gyro_straight(-620, 850)
-
-
 def run_1():
     LAM.reset_angle(0)
     gyro_straight(150, 350)
@@ -133,6 +126,14 @@ def run_1():
     LAM.run_target(150, -100, wait=False)
     gyro_straight(-200, 100)
     gyro_straight(-200,300)
+
+
+def run_2():
+    gyro_straight(400, 250)
+    gyro_straight(-200, 200)
+    gyro_turn(45, 45)
+    gyro_straight(500, 500)
+
 
 def run_3():
     RAM.reset_angle(0)
@@ -154,10 +155,6 @@ def run_4():
     RAM.run_target(450,2200)
     RAM.run_target(900,0,wait=False)
     gyro_straight(-300,700)
-
-
-
-    pass
 
 
 def run_5():
