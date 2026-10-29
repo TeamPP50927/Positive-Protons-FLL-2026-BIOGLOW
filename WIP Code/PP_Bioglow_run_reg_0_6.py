@@ -270,18 +270,43 @@ def run_4():
 
 
 def run_5():
+    RAM.reset_angle(0)
+    LAM.reset_angle(0)
+    gyro_straight(655,700)
+    gyro_turn(55,47)
+    gyro_straight(40,700)
+    LAM.run_target(500,550)
+    gyro_straight(-70,700)
+    LAM.run_angle(150,-300)
+    #completed Keystone
+    gyro_straight(-195,700)
+    RAM.run_target(250,-150)
+    gyro_turn(-51,51)
+    #Completed Into the Past
+    gyro_straight(200,700)
+    RAM.run_target(250,-300)
+    gyro_straight(-50,100)
+    RAM.run_target(250,150)
+    #Completed Humungus Fungus
+    gyro_straight(-60,100)
+    gyro_turn(90,50)
+    LAM.run_angle(250,250)
+    gyro_straight(200,350)
+    LAM.run_angle(250,-300)
+    gyro_turn(35,50)
+    gyro_turn(35,50)
     # Example gyro-controlled curves
     # Replace these with actual mission movements.
 
-    gyro_straight(200, 150)
+    #gyro_straight(200, 250)
 
     # Right curve: 250 mm radius, 90 degrees
-    gyro_curve(120, 250, 90)
+   # gyro_curve(120, 250, 90)
 
-    gyro_straight(100, 150)
+    #gyro_straight(100, 250)
 
     # Left curve: 250 mm radius, 90 degrees
-    gyro_curve(120, 250, -90)
+    #gyro_curve(120, 250, -90)
 
 
 RUNS = (run_0, run_1, run_2, run_3, run_4, run_5)
