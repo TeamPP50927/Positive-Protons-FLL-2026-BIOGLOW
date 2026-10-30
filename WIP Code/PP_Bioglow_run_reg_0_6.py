@@ -1,6 +1,6 @@
 
 """Positive Protons BIOGLOW - SPIKE Prime Pybricks single-file program.
-Last Modified: Oct 28, 2026
+Last Modified: Oct 29, 2026
 
 LEFT: previous run. RIGHT: next run.
 CENTER: execute selected run, then advance.
@@ -273,20 +273,37 @@ def run_5():
     RAM.reset_angle(0)
     LAM.reset_angle(0)
     gyro_straight(655,700)
-    gyro_turn(55,47)
-    gyro_straight(40,700)
-    LAM.run_target(500,550)
-    gyro_straight(-70,700)
-    LAM.run_angle(150,-300)
+    gyro_turn(46,47)
+    gyro_straight(105,700)
+    LAM.run_target(500,600)
+    #gyro_straight(-70,700)
+    LAM.run_angle(500,-300)
     #completed Keystone
-    gyro_straight(-195,700)
-    RAM.run_target(250,-150)
+    gyro_turn(5,100)
+    gyro_straight(-310,700)
+    RAM.run_target(400,-300)
     gyro_turn(-51,51)
     #Completed Into the Past
-    gyro_straight(200,700)
-    RAM.run_target(250,-300)
-    gyro_straight(-50,100)
-    RAM.run_target(250,150)
+    RAM.reset_angle(0)
+    LAM.reset_angle(0)
+    gyro_straight(150,200)
+    RAM.run_target(600,200)
+    gyro_straight(-20,100)
+    RAM.run_target(250,-100)
+    gyro_turn(75,50)
+    gyro_straight(230,200)
+    RAM.run_angle(200,180)
+    RAM.run_angle(200,-180)
+    gyro_turn(10,50)
+    gyro_straight(-450,500)
+    RAM.run_angle(200,200)
+    gyro_turn(-45,50)
+    gyro_straight(200,50)
+    
+    
+    
+
+def run_6():    
     #Completed Humungus Fungus
     gyro_straight(-60,100)
     gyro_turn(90,50)
@@ -309,7 +326,7 @@ def run_5():
     #gyro_curve(120, 250, -90)
 
 
-RUNS = (run_0, run_1, run_2, run_3, run_4, run_5)
+RUNS = (run_0, run_1, run_2, run_3, run_4, run_5, run_6)
 
 
 # --------------------------------------------------
