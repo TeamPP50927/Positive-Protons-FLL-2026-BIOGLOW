@@ -231,13 +231,22 @@ def run_1():
 
 
 def run_2():
+    RAM.reset_angle(0)
     gyro_straight(400, 250)
     gyro_straight(-250, 200)
     #Completed Flip the Rock
-    RAM.run_target(50, -100)
+    RAM.run_target(150, -250,wait=False)
     gyro_turn(45, 37)
-    gyro_straight(500, 500)
-
+    gyro_straight(290, 500)
+    gyro_turn(-43, 37)
+    gyro_straight(400,300)
+    RAM.run_target(50, -150)
+    #gyro_straight(-20,50)
+    RAM.run_target(850,0)
+    gyro_straight(-20,50)
+    RAM.run_target(850,-200)
+    gyro_straight(50.50)
+    RAM.run_target(850,0)
 def run_3():
     RAM.reset_angle(0)
 
