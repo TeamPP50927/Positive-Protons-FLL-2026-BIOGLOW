@@ -251,7 +251,7 @@ def run_3():
     gyro_straight(-320, 500)
 
 
-def run_4():
+def run_5():
     RAM.reset_angle(0)
 
     gyro_straight(195, 700)
@@ -269,7 +269,7 @@ def run_4():
     gyro_straight(-300, 700)
 
 
-def run_5():
+def run_4():
     RAM.reset_angle(0)
     LAM.reset_angle(0)
     gyro_straight(640,700)
