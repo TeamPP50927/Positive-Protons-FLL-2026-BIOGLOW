@@ -254,7 +254,7 @@ def run_3():
 def run_4():
     RAM.reset_angle(0)
 
-    gyro_straight(190, 700)
+    gyro_straight(195, 700)
     RAM.run_target(450, 2700, wait=False)
 
     gyro_straight(90, 20)
@@ -263,7 +263,7 @@ def run_4():
     gyro_straight(-100, 20)
     gyro_straight(30, 20)
 
-    RAM.run_target(450, 2200)
+    RAM.run_target(900, 1500)
     RAM.run_target(900, 0, wait=False)
 
     gyro_straight(-300, 700)
@@ -272,37 +272,45 @@ def run_4():
 def run_5():
     RAM.reset_angle(0)
     LAM.reset_angle(0)
-    gyro_straight(655,700)
-    gyro_turn(46,47)
-    gyro_straight(105,700)
-    LAM.run_target(500,600)
+    gyro_straight(640,700)
+    gyro_curve(50,60,45)
+    gyro_straight_stall(120,50)
+    LAM.run_angle(250,600)
+    LAM.run_angle(250,-600)
+    #gyro_turn(46,47)
+    #gyro_straight(105,700)
+    #LAM.run_target(500,600)
     #gyro_straight(-70,700)
-    LAM.run_angle(500,-300)
+    #LAM.run_angle(500,-300)
     #completed Keystone
-    gyro_turn(5,100)
-    gyro_straight(-310,700)
+    gyro_straight(-290,700)
     RAM.run_target(400,-300)
-    gyro_turn(-51,51)
+    gyro_turn(-40,51)
     #Completed Into the Past
-    RAM.reset_angle(0)
-    LAM.reset_angle(0)
-    gyro_straight(150,200)
+    gyro_straight(130,50)
     RAM.run_target(600,200)
     gyro_straight(-20,100)
     RAM.run_target(250,-100)
-    gyro_turn(75,50)
+    #Completed Fungus
+    gyro_turn(70,50)
+    #gyro_turn(65,50)
     gyro_straight(230,200)
     RAM.run_angle(200,180)
     RAM.run_angle(200,-180)
     gyro_turn(10,50)
+    #Completed Forest Elder
     gyro_straight(-450,500)
     RAM.run_angle(200,200)
     gyro_turn(-45,50)
-    gyro_straight(200,50)
+    gyro_straight(200,50)    
+    gyro_straight(-200,500)
+    #Leaf Cutter Frenzy complete    
+def run_7():   
+    gyro_turn(5,100)
+    RAM.reset_angle(0)
+    LAM.reset_angle(0)
     
     
-    
-
 def run_6():    
     #Completed Humungus Fungus
     gyro_straight(-60,100)
@@ -325,8 +333,13 @@ def run_6():
     # Left curve: 250 mm radius, 90 degrees
     #gyro_curve(120, 250, -90)
 
-
-RUNS = (run_0, run_1, run_2, run_3, run_4, run_5, run_6)
+def run_8():
+    LAM.reset_angle(0)
+   #gyro_straight(150,50)
+    
+    
+    
+RUNS = (run_0, run_1, run_2, run_3, run_4, run_5, run_6, run_7, run_8)
 
 
 # --------------------------------------------------
