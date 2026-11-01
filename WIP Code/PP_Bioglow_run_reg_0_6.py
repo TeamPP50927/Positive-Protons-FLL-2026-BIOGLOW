@@ -237,16 +237,19 @@ def run_2():
     #Completed Flip the Rock
     RAM.run_target(150, -250,wait=False)
     gyro_turn(45, 37)
-    gyro_straight(290, 500)
+    gyro_straight(305, 500)
     gyro_turn(-43, 37)
-    gyro_straight(400,300)
-    RAM.run_target(50, -150)
+    gyro_straight(380,300)
+    #Arrived at Reaching Roots
+    RAM.run_angle(50, 80)
     #gyro_straight(-20,50)
-    RAM.run_target(850,0)
+    #Got 10 points
     gyro_straight(-20,50)
     RAM.run_target(850,-200)
-    gyro_straight(50.50)
+    gyro_straight(50, 50)
     RAM.run_target(850,0)
+    #Got 20 points
+    gyro_straight(20, 50)
 def run_3():
     RAM.reset_angle(0)
 
@@ -315,9 +318,22 @@ def run_4():
     gyro_straight(-200,500)
     #Leaf Cutter Frenzy complete    
 def run_7():   
-    gyro_turn(5,100)
-    RAM.reset_angle(0)
     LAM.reset_angle(0)
+    gyro_straight(300, 300)
+    gyro_turn(40, 45)
+    gyro_straight(490, 450)
+    gyro_turn(-40, 45)
+    RAM.run_target(100, -165,wait=False)
+    gyro_straight(-100, 100)
+    gyro_straight(96, 100)
+    gyro_straight(20, 10)
+    LAM.run_angle(2000, 7000)
+    gyro_straight(30, 100)
+    #finished reaserch platform
+    RAM.run_angle(50, 150)
+    gyro_straight(-100, 70)
+    #finished tangled
+    
     
     
 def run_6():    
@@ -343,8 +359,8 @@ def run_6():
     #gyro_curve(120, 250, -90)
 
 def run_8():
-    LAM.reset_angle(0)
-   #gyro_straight(150,50)
+    RAM.reset_angle(0)
+    RAM.run_target(100, -180)    
     
     
     
