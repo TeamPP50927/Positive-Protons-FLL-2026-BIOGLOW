@@ -204,25 +204,14 @@ def attachment_move(motor, angle, speed=300):
 # --------------------------------------------------
 
 def run_0():
-    gyro_straight(760, 160)
-    gyro_straight(-50, 40)
-    gyro_turn(-60, 50)
-    gyro_straight(-6, 40)
+    gyro_straight(760, 200)
+    gyro_straight(-45, 40)
+    gyro_turn(-60, 45)
+    gyro_straight(-10, 40)
     gyro_turn(60, 45)
-    gyro_straight(-560, 900)
-    gyro_turn(-90, 80)
+    gyro_straight(-540, 500)
+    gyro_turn(-90, 45)
     gyro_straight_stall(-100, 50)
-    #Drone Completed
-    LAM.reset_angle(0)
-    gyro_straight(150, 350)
-    gyro_turn(48, 45)
-    LAM.run_target(850, 300,wait=False)
-    gyro_straight(270, 850)
-    LAM.run_target(250, 30)
-    LAM.run_target(150, -50, wait=False)
-    gyro_straight(-200, 100)
-    gyro_straight(-200, 300)
-
 
 
 def run_1():
@@ -231,11 +220,11 @@ def run_1():
     gyro_straight(150, 350)
     gyro_turn(48, 45)
 
-    LAM.run_target(850, 300,wait=False)
+    LAM.run_target(350, 300)
     gyro_straight(270, 850)
 
     LAM.run_target(250, 50)
-    LAM.run_target(150, -50, wait=False)
+    LAM.run_target(150, -100, wait=False)
 
     gyro_straight(-200, 100)
     gyro_straight(-200, 300)
@@ -248,16 +237,19 @@ def run_2():
     #Completed Flip the Rock
     RAM.run_target(150, -250,wait=False)
     gyro_turn(45, 37)
-    gyro_straight(290, 500)
+    gyro_straight(305, 500)
     gyro_turn(-43, 37)
-    gyro_straight(400,300)
-    RAM.run_target(50, -150)
+    gyro_straight(380,300)
+    #Arrived at Reaching Roots
+    RAM.run_angle(50, 80)
     #gyro_straight(-20,50)
-    RAM.run_target(850,0)
+    #Got 10 points
     gyro_straight(-20,50)
     RAM.run_target(850,-200)
-    gyro_straight(50.50)
+    gyro_straight(50, 50)
     RAM.run_target(850,0)
+    #Got 20 points
+    gyro_straight(20, 50)
 def run_3():
     RAM.reset_angle(0)
 
@@ -272,15 +264,20 @@ def run_3():
 
 
 def run_5():
-    LAM.reset_angle(0)
-    gyro_straight(205, 700)
-    LAM.run_target(400, 2950, wait=False)
-    gyro_straight(65, 20)
+    RAM.reset_angle(0)
+
+    gyro_straight(195, 700)
+    RAM.run_target(450, 2700, wait=False)
+
+    gyro_straight(90, 20)
     wait(1000)
+
     gyro_straight(-100, 20)
-    gyro_straight(30, 20)0
-    LAM.run_target(1000, -700)
-    LAM.run_target(1000, -1600, wait=False)
+    gyro_straight(30, 20)
+
+    RAM.run_target(900, 1500)
+    RAM.run_target(900, 0, wait=False)
+
     gyro_straight(-300, 700)
 
 
@@ -321,9 +318,31 @@ def run_4():
     gyro_straight(-200,500)
     #Leaf Cutter Frenzy complete    
 def run_7():   
-    gyro_turn(5,100)
-    RAM.reset_angle(0)
     LAM.reset_angle(0)
+    RAM.reset_angle(0)
+    gyro_straight(300, 800)
+    gyro_turn(40, 45)
+    gyro_straight(380, 850)
+    gyro_turn(-42, 50)
+    gyro_straight(-60, 150)
+    gyro_straight(10,50)
+    RAM.run_angle(1500,2700)
+    gyro_straight(100,100)
+    #gyro_turn(10,50)
+    RAM.run_angle(1500,-1100)
+    gyro_turn(30,50)
+    gyro_straight(-200,900)
+    #RAM.run_angle(500,500)
+    gyro_turn(-30,50)
+    RAM.run_angle(1500,-1600)
+    gyro_straight(220,800)
+    LAM.run_angle(2000, 7000)
+    #Lifted research Platform
+    gyro_straight(30,500)
+    LAM.run_angle(2000, -6500,wait=False)
+    #RAM.run_angle(1500,-1200,wait=False)
+    gyro_straight(-180, 700)
+    #finished tangled
     
     
 def run_6():    
@@ -350,7 +369,21 @@ def run_6():
 
 def run_8():
     LAM.reset_angle(0)
-   #gyro_straight(150,50)
+    RAM.reset_angle(0)
+    #gyro_straight(340, 800)
+    #gyro_turn(45,50)
+    #gyro_straight(350,300)
+    #gyro_turn(-43,50)
+    #gyro_straight(-50,50)
+    #RAM.run_angle(300,-250)
+    #gyro_straight(80,50)
+    #RAM.run_angle(50,50)
+    #RAM.run_angle(300,250)
+    #gyro_straight(-50,200)
+    #gyro_straight(150,100)
+    #gyro_straight(-200,800)
+    #gyro_curve(300,300,45)
+    gyro_straight(-100,50)
     
     
     
