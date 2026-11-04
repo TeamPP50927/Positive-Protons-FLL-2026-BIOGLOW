@@ -227,8 +227,8 @@ def run_0():
     gyro_straight(-20,100)
     RAM.run_target(250,-100)
     #Completed Fungus
-    gyro_turn(70,50)
-    #gyro_turn(65,50)
+    gyro_turn(75,50)
+    #gyro_turn(70,50)
     gyro_straight(230,200)
     RAM.run_angle(200,180)
     RAM.run_angle(200,-180)
@@ -239,7 +239,11 @@ def run_0():
     gyro_turn(-45,50)
     gyro_straight(200,50)    
     gyro_straight(-200,500)
-    #Leaf Cutter Frenzy complete 
+    #Leaf Cutter Frenzy complete  
+    gyro_turn(45,600) 
+    gyro_straight(430,700) 
+    gyro_turn(-90,600)
+    gyro_straight(-800,700)
 def run_1():
     
 def run_2():
