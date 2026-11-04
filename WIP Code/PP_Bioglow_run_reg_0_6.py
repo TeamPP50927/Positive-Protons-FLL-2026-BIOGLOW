@@ -328,8 +328,8 @@ def run_6():
 def run_7(): 
 
 def run_8():
-    RAM.reset_angle(0)
-    RAM.run_target(100, -180)    
+    #Cross Sides
+    gyro_straight(10000000000, 1000)  
     
     
     
