@@ -245,7 +245,7 @@ def run_0():
     gyro_turn(-90,600)
     gyro_straight(-800,700)
 def run_1():
-    
+    pass
 def run_2():
     #Biocentric Arcitecture
     RAM.reset_angle(0)
@@ -330,7 +330,7 @@ def run_6():
     gyro_straight(-100, 70)
     #Finished tangled
 def run_7(): 
-
+    pass
 def run_8():
     #Cross Sides
     gyro_straight(10000000000, 1000)  
