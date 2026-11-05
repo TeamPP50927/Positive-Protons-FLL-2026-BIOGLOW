@@ -1,4 +1,3 @@
-
 """Positive Protons BIOGLOW - SPIKE Prime Pybricks single-file program.
 Last Modified: Oct 29, 2026
 
@@ -167,6 +166,76 @@ def gyro_curve(speed, radius, angle, kp=3.0):
     finally:
         drive_base.stop()
 
+def gyro_pivot(angle, speed=150, pivot="left"):
+    """
+    Gyro-controlled pivot turn.
+
+    Positive angle = Right turn
+    Negative angle = Left turn
+
+    pivot = "left"  -> Left wheel stationary
+    pivot = "right" -> Right wheel stationary
+    """
+
+    if speed <= 0:
+        raise ValueError("Speed must be positive")
+
+    if pivot not in ("left", "right"):
+        raise ValueError("Invalid pivot wheel")
+
+    if angle == 0:
+        return
+
+    drive_base.stop()
+
+    start_angle = drive_base.angle()
+    target_angle = start_angle + angle
+
+    direction = 1 if angle > 0 else -1
+
+    timer = StopWatch()
+    timeout = 5000
+
+    try:
+        while True:
+
+            current_angle = drive_base.angle()
+            error = target_angle - current_angle
+
+            # Stop when target reached or crossed
+            if direction * error <= 1.5:
+                break
+
+            if timer.time() > timeout:
+                print("Pivot timeout")
+                break
+
+            # Slow down approaching target
+            motor_speed = min(
+                speed,
+                max(30, abs(error) * 3)
+            )
+
+            if pivot == "left":
+                left_motor.brake()
+
+                # Right wheel moves backward for right turn
+                right_motor.run(-direction * motor_speed)
+
+            else:
+                right_motor.brake()
+
+                # Left wheel moves forward for right turn
+                left_motor.run(direction * motor_speed)
+
+            wait(10)
+
+    finally:
+        left_motor.brake()
+        right_motor.brake()
+
+    print("Target:", target_angle)
+    print("Actual:", drive_base.angle())
 
 def gyro_straight_stall(distance, speed=50, timeout=3000):
     """Drive until completed, stalled, or timed out."""
@@ -243,54 +312,60 @@ def run_0():
     gyro_turn(45,600) 
     gyro_straight(430,700) 
     gyro_turn(-90,600)
-    gyro_straight(-800,700)
+    gyro_straight(-800,700) 
+
 def run_1():
+    gyro_straight(350,800)
+    RAM.run_angle(-200,500)
+    gyro_straight(50,50)
     pass
 def run_2():
     #Biocentric Arcitecture
-    RAM.reset_angle(0)
-
+    LAM.reset_angle(0)
     gyro_straight(195, 700)
-    RAM.run_target(450, 2700, wait=False)
-
+    LAM.run_target(700, 3200, wait=False)
     gyro_straight(90, 20)
     wait(1000)
-
     gyro_straight(-100, 20)
     gyro_straight(30, 20)
-
-    RAM.run_target(900, 1500)
-    RAM.run_target(900, 0, wait=False)
-
+    LAM.run_target(900, 1500)
+    LAM.run_target(900, 0, wait=False)
     gyro_straight(-300, 700)
+
 def run_3():
+    pass    
+   
+def run_4():
     #Drone Survey
     RAM.reset_angle(0)
+    gyro_straight(730, 150)
+    gyro_straight(-70,50)
+    gyro_turn(-55, 45)
+    #gyro_straight(-15,50)
+    #gyro_turn(15,50)
+    gyro_turn(45, 45)
+    gyro_straight(-620, 850)
 
-    gyro_straight(60, 500)
-    RAM.run_target(650, 1980)
+    #gyro_straight(60, 500)
+    #RAM.run_target(650, 1980)
+    #gyro_straight(-100, 500)
+    #gyro_straight(40, 300)
+    #RAM.run_target(550, -1980)
+    #gyro_straight(-320, 500)
 
-    gyro_straight(-100, 500)
-    gyro_straight(40, 300)
-
-    RAM.run_target(550, -1980)
-    gyro_straight(-320, 500)
-def run_4():
+def run_5():
     #Exploding Seeds
     LAM.reset_angle(0)
-
     gyro_straight(150, 350)
     gyro_turn(48, 45)
-
     LAM.run_target(350, 300)
     gyro_straight(270, 850)
-
     LAM.run_target(250, 50)
     LAM.run_target(150, -100, wait=False)
-
     gyro_straight(-200, 100)
     gyro_straight(-200, 300)
-def run_5():
+
+def run_6():
     #Flip the Rock and Reaching Roots
     RAM.reset_angle(0)
     gyro_straight(400, 250)
@@ -298,21 +373,24 @@ def run_5():
     #Completed Flip the Rock
     RAM.run_target(150, -250,wait=False)
     gyro_turn(45, 37)
-    gyro_straight(305, 500)
+    gyro_straight(270, 900)
     gyro_turn(-43, 37)
-    gyro_straight(380,300)
+    gyro_straight(430,900)
     #Arrived at Reaching Roots
-    RAM.run_angle(50, 80)
+    RAM.run_angle(150, 100)
     #gyro_straight(-20,50)
     #Got 10 points
-    gyro_straight(-20,50)
-    RAM.run_target(850,-200)
-    gyro_straight(50, 50)
+    gyro_straight(-30,150)
+    RAM.run_angle(1850,200)
+    #gyro_straight(50, 50)
+    RAM.run_target(850,0)
+    RAM.run_target(850,-250)
+    gyro_straight(30,50)
     RAM.run_target(850,0)
     #Got 20 points
-    gyro_straight(20, 50)   
+    gyro_straight(-900, 900)   
 
-def run_6():
+def run_7():
     #The Big Tree   
     LAM.reset_angle(0)
     gyro_straight(300, 300)
@@ -330,12 +408,24 @@ def run_6():
     gyro_straight(-100, 70)
     #Finished tangled
 def run_7(): 
-    pass
+    RAM.run_target(850,-250)
+    gyro_straight(50,50)
+    RAM.run_target(850,0)
+
 def run_8():
-    #Cross Sides
-    gyro_straight(10000000000, 1000)  
-    
-    
+    print("Starting Run 8")
+
+    drive_base.stop()
+
+    # Test right motor backward
+    right_motor.run_angle(100, -180)
+
+    wait(500)
+
+    # Test left motor backward
+    left_motor.run_angle(100, -180)
+
+    print("Motor test complete")
     
 RUNS = (run_0, run_1, run_2, run_3, run_4, run_5, run_6, run_7, run_8)
 
