@@ -344,8 +344,8 @@ def run_7():
     gyro_straight(-100, 70)
     #Finished tangled
 def run_3(): 
-#Moves to other side
-gyro_straight(2000,900)
+    #Moves to other side
+    gyro_straight(1800,900)
 
 def run_8():
    pass
