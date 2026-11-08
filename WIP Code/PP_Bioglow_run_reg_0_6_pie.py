@@ -410,10 +410,6 @@ def run_7():
     RAM.run_angle(50, 150)
     gyro_straight(-100, 70)
     #Finished tangled
-def run_7(): 
-    RAM.run_target(850,-250)
-    gyro_straight(50,50)
-    RAM.run_target(850,0)
 
 def run_8():
     print("Starting Run 8")
