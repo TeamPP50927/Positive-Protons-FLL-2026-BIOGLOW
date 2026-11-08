@@ -368,16 +368,19 @@ def run_5():
 def run_6():
     #Flip the Rock and Reaching Roots
     RAM.reset_angle(0)
+    LAM.reset_angle(0)
     gyro_straight(400, 250)
     gyro_straight(-250, 200)
     #Completed Flip the Rock
     RAM.run_target(150, -250,wait=False)
     gyro_turn(45, 37)
-    gyro_straight(270, 900)
+    LAM.run_target(100, 160,wait=False)
+    gyro_straight(250, 900)
     gyro_turn(-43, 37)
-    gyro_straight(430,900)
+    gyro_straight(420,900)
     #Arrived at Reaching Roots
     RAM.run_angle(150, 100)
+    LAM.run_target(100,0,wait=False)
     #gyro_straight(-20,50)
     #Got 10 points
     gyro_straight(-30,150)
