@@ -307,19 +307,23 @@ def run_6():
     #Completed Flip the Rock
     RAM.run_target(150, -250,wait=False)
     gyro_turn(45, 37)
-    gyro_straight(305, 500)
+    gyro_straight(270, 900)
     gyro_turn(-43, 37)
-    gyro_straight(380,300)
+    gyro_straight(430,900)
     #Arrived at Reaching Roots
-    RAM.run_angle(50, 80)
+    RAM.run_angle(150, 100)
     #gyro_straight(-20,50)
     #Got 10 points
-    gyro_straight(-20,50)
-    RAM.run_target(850,-200)
-    gyro_straight(50, 50)
+    gyro_straight(-30,50)
+    RAM.run_angle(1850,200)
+    #gyro_straight(50, 50)
+    
+    RAM.run_target(850,0)
+    RAM.run_target(850,-250)
+    gyro_straight(30,50)
     RAM.run_target(850,0)
     #Got 20 points
-    gyro_straight(20, 50)   
+    gyro_straight(-900, 900)   
 
 def run_7():
     #The Big Tree   
