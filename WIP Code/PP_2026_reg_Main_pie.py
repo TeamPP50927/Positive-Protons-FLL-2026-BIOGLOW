@@ -1,4 +1,3 @@
-
 """Positive Protons BIOGLOW - SPIKE Prime Pybricks single-file program.
 Last Modified: Oct 29, 2026
 
@@ -245,7 +244,6 @@ def run_0():
     gyro_turn(-90,600)
     gyro_straight(-800,700)
 def run_1():
-   
     #Forest Elder
     RAM.reset_angle
     gyro_straight(240, 700)
@@ -273,11 +271,10 @@ def run_4():
     RAM.reset_angle(0)
 
     gyro_straight(760, 150)
-    gyro_straight(-40, 50)
+    gyro_straight(-50, 50)
     gyro_turn(-65, 45)
     gyro_turn(65, 45)
-    gyro_straight(-620, 850)
-
+    gyro_straight(-560, 850)
 def run_5():
     #Exploding Seeds
     LAM.reset_angle(0)
